@@ -42,11 +42,10 @@ class _PostingsViewState extends State<PostingsView> {
                   document.data() as Map<String, dynamic>;
               return Card(
                 child: ListTile(
-                  leading: Image.network(data['imageLink']),
-                  title: Text(data['postTitle']),
-                  subtitle: Text(data['postContent']),
-                  trailing: Text(
-                      DateFormat.yMMMd().format(data['postDate'].toDate())),
+                  leading: Image.network(data['imageLink'] ?? ""),
+                  title: Text(data['postTitle'] ?? ""),
+                  subtitle: Text(data['postContent'] ?? ""),
+                  // trailing: Text(data['postDate'] ?? DateTime.timestamp() ),
                 ),
               );
             }).toList(),
@@ -55,7 +54,7 @@ class _PostingsViewState extends State<PostingsView> {
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
-          Navigator.pushReplacement(
+          Navigator.push(
             context,
             MaterialPageRoute(builder: (context) => AddAnnouncementForm()),
           );
